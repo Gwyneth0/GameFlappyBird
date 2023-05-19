@@ -27,6 +27,12 @@ export class GameCtrl extends Component {
   @property(BirdAudio)
   private clip: BirdAudio;
 
+  @property(Node)
+  private btnPauseGame: Node;
+  
+  @property(Node)
+  private btnResume: Node;
+
   private isOver: boolean;
 
   // Things to do when the game loads
@@ -122,5 +128,17 @@ export class GameCtrl extends Component {
     if (!this.isOver) {
       this.birdStruck();
     }
+  }
+  // pause game
+  btnpauseGame(){
+    director.pause();
+    this.btnPauseGame.active = true;
+    this.btnResume.active =false;
+  }
+  btnResumePlay(){
+    director.resume();
+    this.btnResume.active = true;
+    this.btnPauseGame.active = false;
+
   }
 }
