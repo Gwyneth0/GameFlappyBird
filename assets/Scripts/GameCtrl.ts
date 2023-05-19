@@ -133,12 +133,11 @@ export class GameCtrl extends Component {
   btnpauseGame(){
     director.pause();
     this.btnPauseGame.active = true;
-    this.btnResume.active =false;
+    // this.btnResume.active =false;
   }
   btnResumePlay(){
     director.resume();
     this.btnResume.active = true;
-    this.btnPauseGame.active = false;
-
+    // this.btnPauseGame.active = false;
   }
 }
