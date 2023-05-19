@@ -13,27 +13,37 @@ export class BirdAudio extends Component {
     tooltip: "place audio node here",
   })
   private AudioSource: AudioSource;
+
   @property(AudioSource)
   private audioSource: AudioSource = null!;
+  
   @property({
     type: Button,
     tooltip: 'Sound Button'
   })
   private soundButton: Button;
+
+  @property(Node)
+  private Mute: Node;
+  
+  @property(Node)
+  private unMute: Node;
+  
   onAudioQueue(index: number) {
     let clip: AudioClip = this.clips[index];
     this.audioSource.playOneShot(clip);
   }
   // turn off / turn on mute
-  onLoad() {
-    // assert(this.audioSource);
-    // this.audioSource = this.audioSource;
-  }
   onSoundButtonClick() {
     this.audioSource.volume = 1;
+    this.unMute.active = false;
+    this.Mute.active = true;
+  
   }
   offSoundButtonClick() {
     this.audioSource.volume = 0;
+    this.Mute.active = false;
+    this.unMute.active = true;
   }
 
 }
