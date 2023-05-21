@@ -25,7 +25,7 @@ export class Bird extends Component {
     }
     protected update() {
         if (this.node.angle !== this.originalRotation && this.node.position.y <=-1000) {
-            this.node.angle = this.originalRotation; // Quay trở lại góc ban đầu khi rơi xuống  
+            this.node.angle = this.originalRotation; // Return to the original angle when falling
         }
     }
     public resetBird() {
@@ -40,10 +40,10 @@ export class Bird extends Component {
         this.birdAnimation.stop();
         // Create a tween to move the bird upwards
         tween(this.node)
-            .to(this.jumpDuration, { position: new Vec3(this.node.position.x, this.node.position.y + this.jumpHeight, 0) }, { easing: 'smooth' })
+            .to(this.jumpDuration, { position: new Vec3(this.node.position.x, this.node.position.y + this.jumpHeight, 0) })
             .start();
         // Play the Animation
-        this.node.angle = this.headDownRotation; // Gật đầu khi bay lên
+        this.node.angle = this.headDownRotation; // Nod as you ascend
         this.birdAnimation.play();
     }
 }

@@ -9,8 +9,6 @@ import { BirdColor } from './OptionScript/BirdColor';
 
 @ccclass('GameCtrl')
 export class GameCtrl extends Component {
-  @property
-  private Speed: number = 200;
 
   @property
   private pipeSpeed: number = 200;
@@ -34,6 +32,7 @@ export class GameCtrl extends Component {
   private btnResume: Node;
 
   private isOver: boolean;
+    static Speed: number;
 
   // Things to do when the game loads
   protected onLoad() {

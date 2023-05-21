@@ -140,7 +140,6 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "Speed": 200,
     "pipeSpeed": 200,
     "result": {
       "__id__": 5
