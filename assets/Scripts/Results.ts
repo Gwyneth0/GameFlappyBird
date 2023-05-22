@@ -31,7 +31,7 @@ export class Results extends Component {
     //Updates the score with the given number.@param num The new score value. 
     protected updateScore(num: number): void {
         this.currentScore = num;
-        this.scoreLabel.string = `${this.currentScore}`;
+        this.scoreLabel.string = ` ${this.currentScore}`;
         if (this.currentScore > this.maxScore) {
             this.maxScore = this.currentScore;
             localStorage.setItem('maxScore', String(this.maxScore));
@@ -56,7 +56,7 @@ export class Results extends Component {
     public resetScore(): void {
         this.updateScore(0);
         this.hideResult();
-        this.scoreLabel.string = `${this.currentScore}`;
+        this.scoreLabel.string = ` ${this.currentScore}`;
     }
 
     //Adds 1 to the current score.
@@ -67,7 +67,7 @@ export class Results extends Component {
     // Displays the end result UI with the current and high scores.
     public showResult() {
         this.maxScore = Math.max(this.maxScore, this.currentScore);
-        this.highScore.string = `${this.maxScore}`;
+        this.highScore.string = ` ${this.maxScore}`;
         this.highScore.node.active = true;
         this.Menu.active = true;
         this.gameOver.active = true;

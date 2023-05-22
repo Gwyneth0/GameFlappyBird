@@ -3,11 +3,11 @@ const { ccclass, property } = _decorator;
 
 @ccclass('PipePool')
 export class PipePool extends Component {
-
+    
     @property(Prefab)
     private prefabPipes: Prefab = null;
 
-    @property(Node)
+   @property(Node)
     private pipePoolHome: Node = null;
 
     private pool: NodePool = new NodePool();
@@ -41,4 +41,5 @@ export class PipePool extends Component {
         this.pool.clear();
         this.initPool();
     }
+
 }

@@ -7,11 +7,11 @@ export class CtrlOption extends Component {
     @property(Button)
     private playButton: Button;
 
-    onLoad() {
+    protected onLoad(): void {
         this.playButton.node.on(Node.EventType.TOUCH_END, this.onPlayButtonClick, this);
     }
     
-    onPlayButtonClick() {
+    protected onPlayButtonClick(): void {
         // Switch scenes when the "Play" button is pressed
         director.loadScene('Main');
     }

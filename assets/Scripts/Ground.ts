@@ -4,13 +4,13 @@ const { ccclass, property } = _decorator;
 @ccclass('Ground')
 export class Ground extends Component {
   
-  @property(Node)
+  @property([Node])
   ground1: Node;
 
-  @property(Node)
+  @property([Node])
   ground2: Node;
 
-  @property(Node)
+  @property([Node])
   ground3: Node;
 
   private groundWidths: number[] = [];
