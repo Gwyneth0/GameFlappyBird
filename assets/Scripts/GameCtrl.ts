@@ -30,7 +30,6 @@ export class GameCtrl extends Component {
   
   @property(Node)
   private btnResume: Node;
-
   
   @property(Node)
   private Mute: Node;
@@ -43,7 +42,7 @@ export class GameCtrl extends Component {
   
 
   private isOver: boolean;
-    static Speed: number;
+  static Speed: number;
 
   // Things to do when the game loads
   protected onLoad() {

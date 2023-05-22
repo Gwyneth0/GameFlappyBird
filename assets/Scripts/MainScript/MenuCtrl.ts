@@ -3,15 +3,15 @@ const { ccclass, property } = _decorator;
 
 @ccclass('MenuCtrl')
 export class MenuCtrl extends Component {
-    @property({
-        type: Node,
-        tooltip: 'Play Button'
-    })
+
+    @property(Node)
     private playButton: Node;
+
     onLoad() {
-// Button play
-        this.playButton.on(Node.EventType.TOUCH_END, this.onPlayButtonClick, this);       
+        // Button play
+        this.playButton.on(Node.EventType.TOUCH_END, this.onPlayButtonClick, this);
     }
+    
     onPlayButtonClick() {
         // Switch scenes when the "Play" button is pressed
         director.loadScene('Scene');

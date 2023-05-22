@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('PipePool')
 export class PipePool extends Component {
+    
     @property(Prefab)
     private prefabPipes: Prefab = null;
 

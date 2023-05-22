@@ -21,7 +21,7 @@ export class BirdAudio extends Component {
     this.audioSource.playOneShot(clip);
   }
   
-  // turn off / turn on mute
+  // turn on volume
   protected onSoundButtonClick() {
     this.audioSource.volume = 1;
     this.unMute.active = false;
@@ -29,6 +29,7 @@ export class BirdAudio extends Component {
   
   }
 
+  // turn off volume
   protected offSoundButtonClick() {
     this.audioSource.volume = 0;
     this.Mute.active = false;

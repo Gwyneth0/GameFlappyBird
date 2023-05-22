@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Bird')
 export class Bird extends Component {
+    
     @property(CCFloat)
     private jumpHeight: number = 1.5;
 
@@ -11,6 +12,7 @@ export class Bird extends Component {
     
     private birdAnimation: Animation;
     private birdLocation: Vec3;
+
     public hitSomething: boolean;
 
     private originalRotation: number = 0;
@@ -23,11 +25,13 @@ export class Bird extends Component {
         this.birdAnimation = this.getComponent(Animation);
         this.originalRotation = this.node.angle;
     }
+
     protected update() {
         if (this.node.angle !== this.originalRotation && this.node.position.y <=-1000) {
             this.node.angle = this.originalRotation; // Return to the original angle when falling
         }
     }
+
     public resetBird() {
         // Set the initial position and reset hitSomething to false
         this.birdLocation = new Vec3(0, 0, 0);
@@ -38,7 +42,6 @@ export class Bird extends Component {
     public fly() {
         // Stop the Animation from playing
         this.birdAnimation.stop();
-        // Create a tween to move the bird upwards
         tween(this.node)
             .to(this.jumpDuration, { position: new Vec3(this.node.position.x, this.node.position.y + this.jumpHeight, 0) })
             .start();

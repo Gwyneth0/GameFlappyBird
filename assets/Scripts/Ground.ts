@@ -5,6 +5,7 @@ import { GameCtrl } from './GameCtrl';
 
 @ccclass('Ground')
 export class Ground extends Component {
+  
   @property(Node)
   ground1: Node;
 
@@ -40,16 +41,12 @@ export class Ground extends Component {
     const scene = director.getScene();
     const canvas = scene.getComponentInChildren(Canvas);
     const canvasWidth = canvas.getComponent(UITransform).width;
-
     this.gameSpeed = GameCtrl.Speed = 200;
-
     for (let i = 0; i < 3; i++) {
       this.tempStartLocations[i].x -= this.gameSpeed * deltaTime;
-
       if (this.tempStartLocations[i].x <= 0 - this.groundWidths[i]) {
         this.tempStartLocations[i].x = canvasWidth;
       }
-
       this[`ground${i + 1}`].setPosition(this.tempStartLocations[i]);
     }
   }

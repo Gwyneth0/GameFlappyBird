@@ -3,29 +3,30 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Results')
 export class Results extends Component {
-    @property(Label)
-    private scoreLabel: Label = null; 
-
-    @property(Label)
-    private highScore: Label = null; 
-
-    @property(Node)
-    private resultEnd: Node = null; 
-
-    @property(Node)
-    private Menu: Node = null; 
-
-    @property(Node)
-    private gameOver: Node = null; 
     
-    @property(Node)
-    private Sound: Node = null; 
+    @property(Label)
+    private scoreLabel: Label = null;
+
+    @property(Label)
+    private highScore: Label = null;
 
     @property(Node)
-    private Home: Node = null; 
+    private resultEnd: Node = null;
 
-    maxScore: number = 0; 
-    currentScore: number; 
+    @property(Node)
+    private Menu: Node = null;
+
+    @property(Node)
+    private gameOver: Node = null;
+
+    @property(Node)
+    private Sound: Node = null;
+
+    @property(Node)
+    private Home: Node = null;
+
+    maxScore: number = 0;
+    currentScore: number;
 
     //Updates the score with the given number.@param num The new score value. 
     protected updateScore(num: number) {
@@ -48,7 +49,6 @@ export class Results extends Component {
         }
         this.highScore.string = String(this.maxScore);
     }
-
     protected onPlayButtonClick() {
         director.loadScene('Main');
     }
@@ -60,7 +60,7 @@ export class Results extends Component {
         this.scoreLabel.string = `${this.currentScore}`;
     }
 
-   //Adds 1 to the current score.
+    //Adds 1 to the current score.
     public addScore() {
         this.updateScore(this.currentScore + 1);
     }
