@@ -1,8 +1,6 @@
 import { _decorator, Component, Node, Vec3, UITransform, director, Canvas } from 'cc';
 const { ccclass, property } = _decorator;
 
-import { GameCtrl } from './GameCtrl';
-
 @ccclass('Ground')
 export class Ground extends Component {
   
@@ -38,13 +36,12 @@ export class Ground extends Component {
   }
 
   update(deltaTime: number) {
-    const scene = director.getScene();
-    const canvas = scene.getComponentInChildren(Canvas);
+    const canvas = director.getScene().getComponentInChildren(Canvas);
     const canvasWidth = canvas.getComponent(UITransform).width;
-    this.gameSpeed = GameCtrl.Speed = 200;
+    this.gameSpeed = 200;
     for (let i = 0; i < 3; i++) {
       this.tempStartLocations[i].x -= this.gameSpeed * deltaTime;
-      if (this.tempStartLocations[i].x <= 0 - this.groundWidths[i]) {
+      if (this.tempStartLocations[i].x <= - this.groundWidths[i]) {
         this.tempStartLocations[i].x = canvasWidth;
       }
       this[`ground${i + 1}`].setPosition(this.tempStartLocations[i]);

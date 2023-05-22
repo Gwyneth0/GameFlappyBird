@@ -3,7 +3,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Results')
 export class Results extends Component {
-    
+
     @property(Label)
     private scoreLabel: Label = null;
 
