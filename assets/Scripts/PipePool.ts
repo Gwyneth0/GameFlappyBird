@@ -3,18 +3,18 @@ const { ccclass, property } = _decorator;
 
 @ccclass('PipePool')
 export class PipePool extends Component {
-    
+
     @property(Prefab)
     private prefabPipes: Prefab = null;
 
-   @property(Node)
+    @property(Node)
     private pipePoolHome: Node = null;
 
     private pool: NodePool = new NodePool();
     private createPipe: Node = null;
 
     //Initialize the object pool with initial pipes
-    protected initPool() {
+    protected initPool(): void {
         for (let i = 0; i < 3; i++) {
             const createPipe = instantiate(this.prefabPipes);
             if (i == 0) {
@@ -26,7 +26,7 @@ export class PipePool extends Component {
     }
 
     //Add a new pipe to the pool or instantiate a new one if the pool is empty
-    public addPool() {
+    public addPool(): void {
         if (this.pool.size() > 0) {
             this.createPipe = this.pool.get();
         } else {
@@ -36,7 +36,7 @@ export class PipePool extends Component {
     }
 
     //Reset the pipe pool by removing all pipes and clearing the pool
-    public reset() {
+    public reset(): void {
         this.pipePoolHome.removeAllChildren();
         this.pool.clear();
         this.initPool();
