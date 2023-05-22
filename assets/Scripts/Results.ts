@@ -32,7 +32,6 @@ export class Results extends Component {
     protected updateScore(num: number) {
         this.currentScore = num;
         this.scoreLabel.string = `${this.currentScore}`;
-
         if (this.currentScore > this.maxScore) {
             this.maxScore = this.currentScore;
             localStorage.setItem('maxScore', String(this.maxScore));
@@ -42,13 +41,13 @@ export class Results extends Component {
 
     protected onLoad() {
         this.Home.on(Node.EventType.TOUCH_END, this.onPlayButtonClick, this);
-
         const storedMaxScore = localStorage.getItem('maxScore');
         if (storedMaxScore) {
             this.maxScore = parseInt(storedMaxScore);
         }
         this.highScore.string = String(this.maxScore);
     }
+
     protected onPlayButtonClick() {
         director.loadScene('Main');
     }

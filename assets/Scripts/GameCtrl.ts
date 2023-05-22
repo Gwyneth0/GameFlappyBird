@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, director, Contact2DType, Collider2D, IPhysics2DContact, Button, EventKeyboard, KeyCode, find, Color, Sprite, AudioSource } from 'cc';
+import { _decorator, Component, Node, director, Contact2DType, Collider2D, IPhysics2DContact, Button, EventKeyboard, KeyCode, find, Color, Sprite, AudioSource, assert } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { Results } from './Results';
@@ -27,19 +27,19 @@ export class GameCtrl extends Component {
 
   @property(Node)
   private btnPauseGame: Node;
-  
+
   @property(Node)
   private btnResume: Node;
-  
+
   @property(Node)
   private Mute: Node;
-  
+
   @property(Node)
   private unMute: Node;
 
   @property(AudioSource)
   private audioSource: AudioSource;
-  
+
 
   private isOver: boolean;
   static Speed: number;
@@ -52,9 +52,7 @@ export class GameCtrl extends Component {
     director.pause();
 
     // Bird color
-    const nodeColor = find('Color');
-    const colerParam = nodeColor.getComponent(BirdColor);
-
+    const colerParam = find('Color').getComponent(BirdColor);
     const sprite = this.bird.getComponent(Sprite);
     if (colerParam.Green) {
       sprite.color = Color.GREEN;
@@ -140,31 +138,31 @@ export class GameCtrl extends Component {
   }
 
   // pause game
-  btnpauseGame(){
+  btnpauseGame() {
     director.pause();
     this.btnPauseGame.active = false;
     this.btnResume.active = true;
-
   }
-  
+
   // resume game 
-  btnResumePlay(){
+  btnResumePlay() {
     director.resume();
     this.btnPauseGame.active = true;
     this.btnResume.active = false;
   }
 
   // turn offback ground music
-  turnOffMusicBackground(){
+  turnOffMusicBackground() {
     this.audioSource.volume = 0;
     this.Mute.active = false;
     this.unMute.active = true;
   }
 
   //turn on back ground music
-  turnonMusicBackground(){
+  turnonMusicBackground() {
     this.audioSource.volume = 1;
     this.unMute.active = false;
     this.Mute.active = true;
   }
+
 }

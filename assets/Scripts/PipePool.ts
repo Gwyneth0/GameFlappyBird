@@ -15,8 +15,7 @@ export class PipePool extends Component {
 
     //Initialize the object pool with initial pipes
     protected initPool() {
-        const initCount = 3;
-        for (let i = 0; i < initCount; i++) {
+        for (let i = 0; i < 3; i++) {
             const createPipe = instantiate(this.prefabPipes);
             if (i == 0) {
                 this.pipePoolHome.addChild(createPipe);

@@ -26,6 +26,7 @@ export class Bird extends Component {
         this.originalRotation = this.node.angle;
     }
 
+    //
     protected update() {
         if (this.node.angle !== this.originalRotation && this.node.position.y <=-1000) {
             this.node.angle = this.originalRotation; // Return to the original angle when falling
