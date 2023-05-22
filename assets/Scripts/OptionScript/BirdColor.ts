@@ -9,12 +9,14 @@ export class BirdColor extends Component {
 
     butonClickGreen() {
         this.Green = true;
+        this.Red = false;
         director.addPersistRootNode(this.node);
         director.loadScene('Scene');
     }
 
     buttonClickRed() {
         this.Red = true;
+        this.Green = false;
         director.addPersistRootNode(this.node);
         director.loadScene('Scene');
     }
