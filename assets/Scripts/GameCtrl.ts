@@ -45,7 +45,7 @@ export class GameCtrl extends Component {
   static Speed: number;
 
   // Things to do when the game loads
-  protected onLoad() {
+  protected onLoad(): void {
     this.initListener();
     this.result.resetScore();
     this.isOver = true;
@@ -62,7 +62,7 @@ export class GameCtrl extends Component {
   }
 
   // Initialize event listener
-  protected initListener() {
+  protected initListener(): void {
     this.node.on(Node.EventType.TOUCH_START, () => {
       if (this.isOver) {
         this.resetGame();
@@ -76,7 +76,7 @@ export class GameCtrl extends Component {
   }
 
   // Game over logic
-  protected gameOver() {
+  protected gameOver(): void {
     this.result.showResult();
     this.isOver = true;
     this.clip.onAudioQueue(3);
@@ -84,7 +84,7 @@ export class GameCtrl extends Component {
   }
 
   // Reset the game state
-  protected resetGame() {
+  protected resetGame(): void {
     this.result.resetScore();
     this.pipeQueue.reset();
     this.isOver = false;
@@ -92,13 +92,13 @@ export class GameCtrl extends Component {
   }
 
   // Start the game
-  protected startGame() {
+  protected startGame(): void {
     this.result.hideResult();
     director.resume();
   }
 
   // Handle logic when a pipe is passed
-  protected passPipe() {
+  protected passPipe(): void {
     this.result.addScore();
     this.clip.onAudioQueue(2);
   }
@@ -109,7 +109,7 @@ export class GameCtrl extends Component {
   }
 
   // Set up contact detection between the bird and objects
-  protected contactGroundPipe() {
+  protected contactGroundPipe(): void {
     const collider = this.bird.getComponent(Collider2D);
     if (collider) {
       collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
@@ -117,13 +117,13 @@ export class GameCtrl extends Component {
   }
 
   // Handle collision detection
-  protected onBeginContact(_selfCollider: Collider2D, _otherCollider: Collider2D, _contact: IPhysics2DContact | null) {
+  protected onBeginContact(_selfCollider: Collider2D, _otherCollider: Collider2D, _contact: IPhysics2DContact | null): void {
     this.bird.hitSomething = true;
     this.clip.onAudioQueue(1);
   }
 
   // Check if the bird has been hit and trigger game over if necessary
-  protected birdStruck() {
+  protected birdStruck(): void {
     this.contactGroundPipe();
     if (this.bird.hitSomething) {
       this.gameOver();
@@ -131,21 +131,21 @@ export class GameCtrl extends Component {
   }
 
   // Update function called every frame
-  protected update() {
+  protected update(): void {
     if (!this.isOver) {
       this.birdStruck();
     }
   }
 
   // pause game
-  btnpauseGame() {
+  protected btnpauseGame(): void {
     director.pause();
     this.btnPauseGame.active = false;
     this.btnResume.active = true;
   }
 
   // resume game 
-  btnResumePlay() {
+  protected btnResumePlay(): void {
     director.resume();
     this.btnPauseGame.active = true;
     this.btnResume.active = false;

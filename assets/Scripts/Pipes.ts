@@ -7,7 +7,7 @@ export class Pipes extends Component {
     private topPipe: Node;
 
     @property(Node)
-    private bottomPipe: Node;
+    private bottomPipe: Node ;
 
     private tempStartLocationUp: Vec3 = new Vec3(0, 0, 0);
     private tempStartLocationDown: Vec3 = new Vec3(0, 0, 0);
@@ -20,7 +20,7 @@ export class Pipes extends Component {
     isPass: boolean;
 
     //what to do when the pipes load
-    onLoad() {
+    protected onLoad(): void {
         this.game = find('GameCtrl').getComponent('GameCtrl')
         this.pipeSpeed = this.game.pipeSpeed;
         this.initPos();
@@ -28,9 +28,9 @@ export class Pipes extends Component {
     }
 
     //initial positions of the grounds
-    initPos() {
-        this.tempStartLocationUp.x = this.topPipe.getComponent(UITransform).width + this.scene.width;
-        this.tempStartLocationDown.x = this.bottomPipe.getComponent(UITransform).width + this.scene.width;
+    protected initPos(): void {
+        this.tempStartLocationUp.x = this.topPipe.width + this.scene.width;
+        this.tempStartLocationDown.x = this.bottomPipe.width + this.scene.width;
 
         let gap = math.randomRangeInt(90, 100);
         let topHeight = math.randomRangeInt(0, 450);
@@ -43,7 +43,7 @@ export class Pipes extends Component {
     }
 
     //move the pipes as we update the game
-    update(deltaTime: number) {
+    protected update(deltaTime: number):void {
         this.tempSpeed = this.pipeSpeed * deltaTime;
 
         this.tempStartLocationDown = this.bottomPipe.position;
@@ -57,11 +57,11 @@ export class Pipes extends Component {
         if (this.isPass == false && this.topPipe.position.x <= 0) {
             this.isPass = true;
             this.game.passPipe();
-        };
+        }
         if (this.topPipe.position.x < (-640)) {
             this.destroy();
             this.game.createPipe();
-        };
+        }
     }
 }
 

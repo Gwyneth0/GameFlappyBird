@@ -25,11 +25,11 @@ export class Results extends Component {
     @property(Node)
     private Home: Node = null;
 
-    maxScore: number = 0;
-    currentScore: number;
+    private maxScore: number = 0;
+    private currentScore: number;
 
     //Updates the score with the given number.@param num The new score value. 
-    protected updateScore(num: number) {
+    protected updateScore(num: number): void {
         this.currentScore = num;
         this.scoreLabel.string = `${this.currentScore}`;
         if (this.currentScore > this.maxScore) {
@@ -39,7 +39,7 @@ export class Results extends Component {
         }
     }
 
-    protected onLoad() {
+    protected onLoad(): void {
         this.Home.on(Node.EventType.TOUCH_END, this.onPlayButtonClick, this);
         const storedMaxScore = localStorage.getItem('maxScore');
         if (storedMaxScore) {
@@ -48,12 +48,12 @@ export class Results extends Component {
         this.highScore.string = String(this.maxScore);
     }
 
-    protected onPlayButtonClick() {
+    protected onPlayButtonClick(): void {
         director.loadScene('Main');
     }
 
     //Resets the score back to 0 and hides the game over UI.
-    public resetScore() {
+    public resetScore(): void {
         this.updateScore(0);
         this.hideResult();
         this.scoreLabel.string = `${this.currentScore}`;

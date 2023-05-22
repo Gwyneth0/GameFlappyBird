@@ -12,28 +12,27 @@ export class BirdAudio extends Component {
 
   @property(Node)
   private Mute: Node;
-  
+
   @property(Node)
   private unMute: Node;
-  
-  public onAudioQueue(index: number) {
+
+  public onAudioQueue(index: number): void {
     let clip: AudioClip = this.clips[index];
     this.audioSource.playOneShot(clip);
   }
-  
+
   // turn on volume
-  protected onSoundButtonClick() {
+  protected onSoundButtonClick(): void {
     this.audioSource.volume = 1;
     this.unMute.active = false;
     this.Mute.active = true;
-  
+
   }
 
   // turn off volume
-  protected offSoundButtonClick() {
+  protected offSoundButtonClick(): void {
     this.audioSource.volume = 0;
     this.Mute.active = false;
     this.unMute.active = true;
   }
-
 }

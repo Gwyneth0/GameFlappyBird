@@ -17,14 +17,14 @@ export class Ground extends Component {
   private tempStartLocations: Vec3[] = [];
   private gameSpeed: number;
   
-  onLoad() {
+  protected onLoad(): void {
     this.startUp();
   }
 
-  startUp() {
-    this.groundWidths.push(this.ground1.getComponent(UITransform).width);
-    this.groundWidths.push(this.ground2.getComponent(UITransform).width);
-    this.groundWidths.push(this.ground3.getComponent(UITransform).width);
+  protected startUp(): void {
+    this.groundWidths.push(this.ground1.width);
+    this.groundWidths.push(this.ground2.width);
+    this.groundWidths.push(this.ground3.width);
 
     this.tempStartLocations[0] = new Vec3(0, 0, 0);
     this.tempStartLocations[1] = new Vec3(this.groundWidths[0], 0, 0);
@@ -35,7 +35,7 @@ export class Ground extends Component {
     this.ground3.setPosition(this.tempStartLocations[2]);
   }
 
-  update(deltaTime: number) {
+  protected update(deltaTime: number): void {
     const canvas = director.getScene().getComponentInChildren(Canvas);
     const canvasWidth = canvas.getComponent(UITransform).width;
     this.gameSpeed = 200;
