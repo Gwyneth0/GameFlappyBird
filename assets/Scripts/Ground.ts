@@ -46,7 +46,7 @@ export class Ground extends Component {
     for (let i = 0; i < 3; i++) {
       this.tempStartLocations[i].x -= this.gameSpeed * deltaTime;
 
-      if (this.tempStartLocations[i].x <= (0 - this.groundWidths[i])) {
+      if (this.tempStartLocations[i].x <= 0 - this.groundWidths[i]) {
         this.tempStartLocations[i].x = canvasWidth;
       }
 

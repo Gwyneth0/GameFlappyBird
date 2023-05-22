@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, director, Contact2DType, Collider2D, IPhysics2DContact, Button, EventKeyboard, KeyCode, find, Color, Sprite } from 'cc';
+import { _decorator, Component, Node, director, Contact2DType, Collider2D, IPhysics2DContact, Button, EventKeyboard, KeyCode, find, Color, Sprite, AudioSource } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { Results } from './Results';
@@ -30,6 +30,17 @@ export class GameCtrl extends Component {
   
   @property(Node)
   private btnResume: Node;
+
+  
+  @property(Node)
+  private Mute: Node;
+  
+  @property(Node)
+  private unMute: Node;
+
+  @property(AudioSource)
+  private audioSource: AudioSource;
+  
 
   private isOver: boolean;
     static Speed: number;
@@ -128,6 +139,7 @@ export class GameCtrl extends Component {
       this.birdStruck();
     }
   }
+
   // pause game
   btnpauseGame(){
     director.pause();
@@ -135,9 +147,25 @@ export class GameCtrl extends Component {
     this.btnResume.active = true;
 
   }
+  
+  // resume game 
   btnResumePlay(){
     director.resume();
     this.btnPauseGame.active = true;
     this.btnResume.active = false;
+  }
+
+  // turn offback ground music
+  turnOffMusicBackground(){
+    this.audioSource.volume = 0;
+    this.Mute.active = false;
+    this.unMute.active = true;
+  }
+
+  //turn on back ground music
+  turnonMusicBackground(){
+    this.audioSource.volume = 1;
+    this.unMute.active = false;
+    this.Mute.active = true;
   }
 }
