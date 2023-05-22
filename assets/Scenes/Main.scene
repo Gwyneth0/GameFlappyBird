@@ -2061,10 +2061,7 @@
       "__uuid__": "772d023b-f12d-4ce7-9e69-2b56e2803713@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_hoverSprite": {
-      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_hoverSprite": null,
     "_pressedSprite": {
       "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
       "__expectedType__": "cc.SpriteFrame"

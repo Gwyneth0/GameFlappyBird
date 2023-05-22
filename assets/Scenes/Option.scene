@@ -1308,7 +1308,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "16a43ecb-2cf4-4d68-90d8-be0a00ff31ce@f9941",
+      "__uuid__": "50a00117-ee24-4f1b-9a03-1dca3c743e00@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -1371,13 +1371,10 @@
       "a": 255
     },
     "_normalSprite": {
-      "__uuid__": "16a43ecb-2cf4-4d68-90d8-be0a00ff31ce@f9941",
+      "__uuid__": "50a00117-ee24-4f1b-9a03-1dca3c743e00@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_hoverSprite": {
-      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_hoverSprite": null,
     "_pressedSprite": {
       "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
       "__expectedType__": "cc.SpriteFrame"
@@ -1581,7 +1578,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "f41092b3-4dcb-4d41-ba30-3cb9716539f6@f9941",
+      "__uuid__": "e2e4c7d7-6aca-41d3-93eb-3729aa5b1d0e@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -1644,13 +1641,10 @@
       "a": 255
     },
     "_normalSprite": {
-      "__uuid__": "f41092b3-4dcb-4d41-ba30-3cb9716539f6@f9941",
+      "__uuid__": "e2e4c7d7-6aca-41d3-93eb-3729aa5b1d0e@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_hoverSprite": {
-      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_hoverSprite": null,
     "_pressedSprite": {
       "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
       "__expectedType__": "cc.SpriteFrame"
@@ -1861,10 +1855,7 @@
       "__uuid__": "b0438204-cf6c-4f37-9143-33b436a2239b@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
-    "_hoverSprite": {
-      "__uuid__": "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_hoverSprite": null,
     "_pressedSprite": {
       "__uuid__": "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
       "__expectedType__": "cc.SpriteFrame"

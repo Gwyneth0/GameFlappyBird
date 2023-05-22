@@ -58,7 +58,7 @@ export class Pipes extends Component {
             this.isPass = true;
             this.game.passPipe();
         };
-        if (this.topPipe.position.x < (-960)) {
+        if (this.topPipe.position.x < (-640)) {
             this.destroy();
             this.game.createPipe();
         };
