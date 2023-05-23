@@ -23,7 +23,6 @@ export class Pipes extends Component {
         this.isPass = false;
     }
 
-
     //initial positions of the grounds
     protected initPos(): void {
         const pipeWidth = this.topPipe.width;

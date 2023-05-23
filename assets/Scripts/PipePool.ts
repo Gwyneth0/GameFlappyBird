@@ -7,7 +7,7 @@ export class PipePool extends Component {
     @property(Prefab)
     private prefabPipes: Prefab = null;
 
-    @property(Node)S
+    @property(Node)
     private pipePoolHome: Node = null;
 
     private pool: NodePool = new NodePool();
