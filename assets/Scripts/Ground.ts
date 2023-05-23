@@ -3,7 +3,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Ground')
 export class Ground extends Component {
-  
+
   @property([Node])
   ground1: Node;
 
@@ -16,7 +16,7 @@ export class Ground extends Component {
   private groundWidths: number[] = [];
   private tempStartLocations: Vec3[] = [];
   private gameSpeed: number;
-  
+
   protected onLoad(): void {
     this.startUp();
   }

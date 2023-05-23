@@ -111,6 +111,7 @@ export class GameCtrl extends Component {
   // Set up contact detection between the bird and objects
   protected contactGroundPipe(): void {
     const collider = this.bird.getComponent(Collider2D);
+    console.log(collider)
     if (collider) {
       collider.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
     }

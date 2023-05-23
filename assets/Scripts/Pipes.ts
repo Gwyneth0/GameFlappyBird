@@ -1,27 +1,24 @@
 import { _decorator, Component, Node, Vec3, screen, find, UITransform, math } from 'cc';
+import { GameCtrl } from './GameCtrl';
 const { ccclass, property } = _decorator;
-
 @ccclass('Pipes')
 export class Pipes extends Component {
     @property(Node)
     private topPipe: Node;
 
     @property(Node)
-    private bottomPipe: Node ;
+    private bottomPipe: Node;
 
-    private tempStartLocationUp: Vec3 = new Vec3(0, 0, 0);
-    private tempStartLocationDown: Vec3 = new Vec3(0, 0, 0);
     private scene = screen.windowSize;
-    private game;
+    private game: any;
 
-    private pipeSpeed: number;
-    private tempSpeed: number;
+    private pipeSpeed = 200;
 
     isPass: boolean;
 
     //what to do when the pipes load
     protected onLoad(): void {
-        this.game = find('GameCtrl').getComponent('GameCtrl')
+        this.game = find('GameCtrl').getComponent('GameCtrl');
         this.pipeSpeed = this.game.pipeSpeed;
         this.initPos();
         this.isPass = false;
@@ -29,38 +26,41 @@ export class Pipes extends Component {
 
     //initial positions of the grounds
     protected initPos(): void {
-        this.tempStartLocationUp.x = this.topPipe.width + this.scene.width;
-        this.tempStartLocationDown.x = this.bottomPipe.width + this.scene.width;
+        const pipeWidth = this.topPipe.width;
+        const sceneWidth = this.scene.width;
 
-        let gap = math.randomRangeInt(90, 100);
-        let topHeight = math.randomRangeInt(0, 450);
+        const gap = math.randomRangeInt(90, 100);
+        const topHeight = math.randomRangeInt(0, 450);
 
-        this.tempStartLocationUp.y = topHeight;
-        this.tempStartLocationDown.y = (topHeight - (gap * 10));
+        const topPipePosition = new Vec3(pipeWidth + sceneWidth, topHeight, 0);
+        const bottomPipePosition = new Vec3(pipeWidth + sceneWidth, topHeight - (gap * 10), 0);
 
-        this.topPipe.setPosition(this.tempStartLocationUp.x, this.tempStartLocationUp.y);
-        this.bottomPipe.setPosition(this.tempStartLocationDown.x, this.tempStartLocationDown.y);
+        this.topPipe.setPosition(topPipePosition);
+        this.bottomPipe.setPosition(bottomPipePosition);
+
     }
 
     //move the pipes as we update the game
-    protected update(deltaTime: number):void {
-        this.tempSpeed = this.pipeSpeed * deltaTime;
+    protected update(deltaTime: number): void {
+        const tempSpeed = this.pipeSpeed * deltaTime;
 
-        this.tempStartLocationDown = this.bottomPipe.position;
-        this.tempStartLocationUp = this.topPipe.position;
-        this.tempStartLocationDown.x -= this.tempSpeed;
-        this.tempStartLocationUp.x -= this.tempSpeed;
+        const bottomPipePosition = this.bottomPipe.position.clone();
+        bottomPipePosition.x -= tempSpeed;
+        this.bottomPipe.setPosition(bottomPipePosition);
 
-        this.bottomPipe.setPosition(this.tempStartLocationDown);
-        this.topPipe.setPosition(this.tempStartLocationUp);
+        const topPipePosition = this.topPipe.position.clone();
+        topPipePosition.x -= tempSpeed;
+        this.topPipe.setPosition(topPipePosition);
+
 
         if (this.isPass == false && this.topPipe.position.x <= 0) {
             this.isPass = true;
+            this.game.createPipe();
             this.game.passPipe();
         }
         if (this.topPipe.position.x < (-640)) {
             this.destroy();
-            this.game.createPipe();
+
         }
     }
 }
