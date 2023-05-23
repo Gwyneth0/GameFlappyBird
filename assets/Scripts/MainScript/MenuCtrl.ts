@@ -10,9 +10,6 @@ export class MenuCtrl extends Component {
     @property(Button)
     private Option: Button;
 
-    // @property(Button)
-    // private Exit: Button;
-
     protected onLoad(): void {
         // Button play
         this.playButton.node.on(Node.EventType.TOUCH_END, this.onPlayButtonClick, this);
@@ -26,11 +23,7 @@ export class MenuCtrl extends Component {
     }
 
     protected optionButtonClick(): void {
-        director.loadScene('Option')
+        director.loadScene('Option');
     }
-    // onExitButton() {
-    //     // Switch scenes when the "Play" button is pressed
-    //     director.loadScene('Main');
-    // }
 }
 

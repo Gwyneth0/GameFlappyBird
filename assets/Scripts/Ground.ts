@@ -22,17 +22,16 @@ export class Ground extends Component {
   }
 
   protected startUp(): void {
-    this.groundWidths.push(this.ground1.width);
-    this.groundWidths.push(this.ground2.width);
-    this.groundWidths.push(this.ground3.width);
-
-    this.tempStartLocations[0] = new Vec3(0, 0, 0);
-    this.tempStartLocations[1] = new Vec3(this.groundWidths[0], 0, 0);
-    this.tempStartLocations[2] = new Vec3(this.groundWidths[0] + this.groundWidths[1], 0, 0);
-
-    this.ground1.setPosition(this.tempStartLocations[0]);
-    this.ground2.setPosition(this.tempStartLocations[1]);
-    this.ground3.setPosition(this.tempStartLocations[2]);
+    this.groundWidths = [this.ground1.width, this.ground2.width, this.ground3.width];
+    this.tempStartLocations = [
+      new Vec3(0, 0, 0),
+      new Vec3(this.groundWidths[0], 0, 0),
+      new Vec3(this.groundWidths[0] + this.groundWidths[1], 0, 0)
+    ];
+    
+    [this.ground1, this.ground2, this.ground3].forEach((ground, index) => {
+      ground.setPosition(this.tempStartLocations[index]);
+    });    
   }
 
   protected update(deltaTime: number): void {

@@ -1,5 +1,4 @@
-import { _decorator, Component, Node, Vec3, screen, find, UITransform, math } from 'cc';
-import { GameCtrl } from './GameCtrl';
+import { _decorator, Component, Node, Vec3, screen, find, math } from 'cc';
 const { ccclass, property } = _decorator;
 @ccclass('Pipes')
 export class Pipes extends Component {
@@ -18,11 +17,12 @@ export class Pipes extends Component {
 
     //what to do when the pipes load
     protected onLoad(): void {
-        this.game = find('GameCtrl').getComponent('GameCtrl');
+        this.Find();
         this.pipeSpeed = this.game.pipeSpeed;
         this.initPos();
         this.isPass = false;
     }
+
 
     //initial positions of the grounds
     protected initPos(): void {
@@ -62,7 +62,12 @@ export class Pipes extends Component {
             this.destroy();
 
         }
+
     }
+    private Find() {
+        this.game = find('GameCtrl').getComponent('GameCtrl');
+    }
+
 }
 
 
